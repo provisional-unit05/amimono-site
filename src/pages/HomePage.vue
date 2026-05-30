@@ -7,7 +7,7 @@ import { works } from '../data/works';
     <section class="hero-panel">
       <div class="hero-copy">
         <p class="eyebrow">まゆまゆの編み物たち</p>
-        <h1>まゆまゆの編み物たち</h1>
+        <h1>まゆまゆの編み物たち!</h1>
         <p>「温かみを日常のそばに」をコンセプトに・・・・</p>
       </div>
     </section>
