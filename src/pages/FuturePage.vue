@@ -7,7 +7,7 @@
       <div class="future-card">
         <span>coming soon</span>
       </div>
-      <router-link class="back-link" to="/">← トップに戻る</router-link>
+      <router-link class="back-link" to="/">トップに戻る</router-link>
     </section>
   </main>
 </template>
