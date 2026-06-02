@@ -26,21 +26,6 @@ const goBack = () => {
         <p class="category">{{ item.category }}</p>
         <h1>{{ item.title }}</h1>
         <p class="description">{{ item.description }}</p>
-
-        <div class="detail-spec">
-          <div>
-            <span>材料</span>
-            <strong>{{ item.materials }}</strong>
-          </div>
-          <div>
-            <span>難易度</span>
-            <strong>{{ item.level }}</strong>
-          </div>
-          <div>
-            <span>仕上がり</span>
-            <strong>{{ item.size }}</strong>
-          </div>
-        </div>
       </div>
     </section>
   </main>
@@ -54,7 +39,7 @@ const goBack = () => {
 <style scoped>
 .page {
   position: relative;
-  padding: 24px 24px 40px;
+  padding: 20px 18px 30px;
   max-width: 1040px;
   margin: 0 auto;
   z-index: 1;
@@ -65,14 +50,14 @@ const goBack = () => {
   align-items: center;
   gap: 8px;
   border: none;
-  background: rgba(255, 255, 255, 0.86);
+  background: rgba(255, 255, 255, 0.92);
   color: #1d3e28;
   padding: 14px 18px;
   border-radius: 999px;
   box-shadow: 0 14px 30px rgba(34, 74, 55, 0.12);
   cursor: pointer;
   font-size: 0.95rem;
-  margin-bottom: 28px;
+  margin-bottom: 24px;
 }
 
 .detail-card {
@@ -101,7 +86,7 @@ const goBack = () => {
 }
 
 .detail-content {
-  padding: 36px 32px;
+  padding: 32px 28px;
 }
 
 .category {
@@ -120,33 +105,9 @@ h1 {
 }
 
 .description {
-  margin: 0 0 28px;
-  line-height: 1.78;
+  margin: 0;
+  line-height: 1.8;
   color: #3e5e48;
-}
-
-.detail-spec {
-  display: grid;
-  gap: 18px;
-}
-
-.detail-spec div {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  padding: 18px 18px;
-  border-radius: 22px;
-  background: rgba(237, 249, 239, 0.85);
-}
-
-.detail-spec span {
-  color: #56725c;
-  font-size: 0.92rem;
-}
-
-.detail-spec strong {
-  color: #1d3e28;
-  font-weight: 600;
 }
 
 .not-found {
@@ -157,5 +118,30 @@ h1 {
   margin: 0 0 18px;
   font-size: 1.15rem;
   color: #3d5b48;
+}
+
+@media (max-width: 840px) {
+  .detail-card {
+    grid-template-columns: 1fr;
+  }
+
+  .image-panel {
+    min-height: 320px;
+  }
+}
+
+@media (max-width: 520px) {
+  .page {
+    padding: 16px 14px 24px;
+  }
+
+  .back-button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .detail-content {
+    padding: 24px 20px;
+  }
 }
 </style>
