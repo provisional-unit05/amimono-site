@@ -9,6 +9,7 @@ const toggleMenu = () => {
   menuOpen.value = !menuOpen.value;
 };
 
+
 const closeMenu = () => {
   menuOpen.value = false;
 };
