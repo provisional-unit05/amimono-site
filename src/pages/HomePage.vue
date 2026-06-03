@@ -78,10 +78,6 @@ onUnmounted(() => {
           <div class="preview-image">
             <img :src="item.image" :alt="item.title" loading="lazy" />
           </div>
-          <div class="preview-meta">
-            <h2 :style="{ color: item.accent }">{{ item.title }}</h2>
-            <p>{{ item.description }}</p>
-          </div>
         </div>
       </div>
     </section>
@@ -119,11 +115,11 @@ onUnmounted(() => {
 
 .menu-button {
   position: fixed;
-  width: 100px;
-  height: 100px;
+  width: 50px;
+  height: 50px;
   margin: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.75);
-  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(254, 206, 236, 0.75);
+  background: rgba(236, 41, 194, 0.142);
   border-radius: 14px;
   place-items: center;
   cursor: pointer;
@@ -133,14 +129,14 @@ onUnmounted(() => {
 
 .menu-button span {
   display: block;
-  width: 50px;
+  width: 30px;
   height: 2px;
   background: #fff;
   border-radius: 1px;
 }
 
 .menu-button span + span {
-  margin-top: 20px;
+  margin-top: 5px;
 }
 
 .hero-banner {
@@ -195,20 +191,20 @@ onUnmounted(() => {
   margin: 0 0 16px;
   text-transform: uppercase;
   letter-spacing: 0.22em;
-  font-size: 2rem;
+  font-size: 1.25rem;
   color: rgba(255, 255, 255, 0.9);
 }
 
 .hero-banner h1 {
   margin: 0 0 20px;
-  font-size: clamp(3rem, 6vw, 5.2rem);
+  font-size: clamp(2rem, 6vw, 3.5rem);
   line-height: 1.02;
   letter-spacing: -0.04em;
 }
 
 .intro {
   margin: 0;
-  font-size: 2rem;
+  font-size: 1.25rem;
   line-height: 1.8;
   color: rgba(255, 255, 255, 0.95);
 }
