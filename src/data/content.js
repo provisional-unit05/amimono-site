@@ -1,11 +1,13 @@
+const BASE_URL = import.meta.env.BASE_URL;
+
 export const siteContent = {
   hero: {
-    backgroundImage: '/images/knitting.jpg',
+    backgroundImage: `${BASE_URL}images/knitting.jpg`,
     images: [
-      '/images/knittingBack1.jpg',
-      '/images/knittingBack2.jpg',
-      '/images/knittingBack3.jpg',
-      '/images/knittingBack4.jpg'
+      `${BASE_URL}images/knittingBack1.jpg`,
+      `${BASE_URL}images/knittingBack2.jpg`,
+      `${BASE_URL}images/knittingBack3.jpg`,
+      `${BASE_URL}images/knittingBack4.jpg`
     ],
     label: '編み物ギャラリー',
     title: 'やさしさを編む、日常のための作品たち',
@@ -22,35 +24,35 @@ export const siteContent = {
       id: '1',
       title: 'ハンドバッグA',
       description: '落ち着いたトーンで仕上げた、日常の装いに馴染む編みバッグ。',
-      image: '/images/handbag.jpg',
+      image: `${BASE_URL}images/handbag.jpg`,
       accent: '#5f776b',
     },
     {
       id: '2',
       title: 'バケットバッグ',
       description: '柔らかなフォルムと控えめな色で、さりげなく存在感を放つ一品。',
-      image: '/images/bucketHand.jpg',
+      image: `${BASE_URL}images/bucketHand.jpg`,
       accent: '#a17774',
     },
     {
       id: '3',
       title: 'ドイリーの花かざり',
       description: '窓辺に馴染む、繊細な雰囲気を纏った編みモチーフ。',
-      image: '/images/doily.jpg',
+      image: `${BASE_URL}images/doily.jpg`,
       accent: '#8c7961',
     },
     {
       id: '4',
       title: '水筒ケース',
       description: 'お出かけの相棒になる、やわらかい手触りのケース。',
-      image: '/images/bottleHolder.jpg',
+      image: `${BASE_URL}images/bottleHolder.jpg`,
       accent: '#6a8277',
     },
     {
       id: '5',
       title: '麦わら帽子の編み飾り',
       description: '夏らしい表情を添える、ナチュラルな編み飾り。',
-      image: '/images/strawHat.jpg',
+      image: `${BASE_URL}images/strawHat.jpg`,
       accent: '#b99f6c',
     },
   ],
