@@ -166,6 +166,7 @@ h1 {
   flex-direction: column;
   align-items: stretch;
   background: #f9faf7;
+  padding: 0;
   border: 1px solid rgba(140, 156, 141, 0.18);
   border-radius: 22px;
   overflow: hidden;
@@ -219,7 +220,7 @@ h1 {
 }
 
 .modal-panel {
-  width: min(920px, 100%);
+  width: min(500px, 100%);
   background: #fff;
   border-radius: 26px;
   overflow: hidden;

@@ -104,7 +104,9 @@ onUnmounted(() => {
         </div>
       </div>
     </section>
-
+    <div class="caution-note">
+      <p>{{ siteContent.CautionaryNote }}</p>
+    </div>
     <div class="menu-overlay" v-if="menuOpen" @click.self="closeMenu">
       <div class="menu-panel">
         <div class="menu-header">
@@ -414,6 +416,12 @@ onUnmounted(() => {
   padding: 18px 16px;
   border-radius: 18px;
   background: rgba(244, 247, 242, 0.96);
+}
+
+.caution-note {
+  margin: 32px 10px 0;
+  font-size: 0.5rem;
+  color: #627161;
 }
 
 @media (max-width: 960px) {
