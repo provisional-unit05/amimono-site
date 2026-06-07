@@ -1,18 +1,39 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import { siteContent } from '../data/content';
 import { useRouter } from 'vue-router';
 
 const router = useRouter();
 const { works } = siteContent;
 const selectedWork = ref(null);
+const selectedImageIndex = ref(0);
+
+const selectedImages = computed(() => {
+  if (!selectedWork.value) return [];
+  return Array.isArray(selectedWork.value.image)
+    ? selectedWork.value.image
+    : [selectedWork.value.image];
+});
 
 const openModal = (work) => {
   selectedWork.value = work;
+  selectedImageIndex.value = 0;
 };
 
 const closeModal = () => {
   selectedWork.value = null;
+};
+
+const prevSlide = () => {
+  if (!selectedImages.value.length) return;
+  selectedImageIndex.value =
+    (selectedImageIndex.value - 1 + selectedImages.value.length) % selectedImages.value.length;
+};
+
+const nextSlide = () => {
+  if (!selectedImages.value.length) return;
+  selectedImageIndex.value =
+    (selectedImageIndex.value + 1) % selectedImages.value.length;
 };
 
 const goHome = () => {
@@ -24,10 +45,9 @@ const goHome = () => {
   <main class="page works-page">
     <header class="section-header">
       <div>
-        <p class="eyebrow">作品紹介</p>
-        <h1>シンプルで上品な編み物コレクション</h1>
+        <p class="eyebrow">{{ siteContent.worksTitle }}</p>
+        <h1>{{ siteContent.worksDetail }}</h1>
       </div>
-      <button class="secondary-button" type="button" @click="goHome">トップへ</button>
     </header>
 
     <section class="works-grid">
@@ -39,7 +59,7 @@ const goHome = () => {
         @click="openModal(item)"
       >
         <div class="work-image">
-          <img :src="item.image" :alt="item.title" />
+          <img :src="Array.isArray(item.image) ? item.image[0] : item.image" :alt="item.title" />
         </div>
         <div class="work-meta">
           <h2 :style="{ color: item.accent }">{{ item.title }}</h2>
@@ -47,19 +67,47 @@ const goHome = () => {
         </div>
       </button>
     </section>
-
     <div class="modal-mask" v-if="selectedWork" @click.self="closeModal">
       <div class="modal-panel">
         <button class="modal-close" type="button" @click="closeModal">×</button>
         <div class="modal-image">
-          <img :src="selectedWork.image" :alt="selectedWork.title" />
+          <img
+            :src="selectedImages[selectedImageIndex]"
+            :alt="selectedWork.title"
+          />
+          <button
+            v-if="selectedImages.length > 1"
+            class="carousel-arrow left"
+            type="button"
+            @click.stop="prevSlide"
+          >
+            ‹
+          </button>
+          <button
+            v-if="selectedImages.length > 1"
+            class="carousel-arrow right"
+            type="button"
+            @click.stop="nextSlide"
+          >
+            ›
+          </button>
+          <div v-if="selectedImages.length > 1" class="carousel-dots">
+            <button
+              v-for="(img, idx) in selectedImages"
+              :key="idx"
+              type="button"
+              :class="['dot', { active: idx === selectedImageIndex } ]"
+              @click="selectedImageIndex = idx"
+            ></button>
+          </div>
         </div>
         <div class="modal-content">
           <h2 :style="{ color: selectedWork.accent }">{{ selectedWork.title }}</h2>
-          <p>{{ selectedWork.description }}</p>
+          <p>{{ selectedWork.detail }}</p>
         </div>
       </div>
     </div>
+    <button class="secondary-button" type="button" @click="goHome">トップへ</button>
   </main>
 </template>
 
@@ -100,6 +148,7 @@ h1 {
   background: rgba(255, 255, 255, 0.96);
   border: 1px solid rgba(146, 171, 150, 0.35);
   color: #1f3e2f;
+  margin-top: 30px;
   padding: 12px 18px;
   border-radius: 999px;
   cursor: pointer;
@@ -193,9 +242,10 @@ h1 {
 
 .modal-image {
   width: 100%;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 16 / 12;
   overflow: hidden;
   background: #f5f6f2;
+  position: relative;
 }
 
 .modal-image img {
@@ -203,6 +253,54 @@ h1 {
   height: 100%;
   object-fit: cover;
   display: block;
+}
+
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 46px;
+  height: 46px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.82);
+  color: #20392d;
+  font-size: 1.8rem;
+  line-height: 1;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 8px 20px rgba(14, 33, 22, 0.14);
+}
+
+.carousel-arrow.left {
+  left: 16px;
+}
+
+.carousel-arrow.right {
+  right: 16px;
+}
+
+.carousel-dots {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  display: flex;
+  gap: 10px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  padding: 0;
+}
+
+.dot.active {
+  background: #fff;
 }
 
 .modal-content {

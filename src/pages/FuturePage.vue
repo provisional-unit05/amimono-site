@@ -1,14 +1,25 @@
+<script setup>
+import { siteContent } from '../data/content';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+
+const goHome = () => {
+  router.push('/');
+};
+</script>
+
 <template>
   <main class="page future-page">
     <section class="future-panel">
-      <p class="eyebrow">これから</p>
-      <h1>準備中のコンテンツ</h1>
-      <p>新しい作品や展示、活動情報をまもなく公開します。今後の展開にぜひご期待ください。</p>
+      <p class="eyebrow">{{ siteContent.future.eyebrow }}</p>
+      <h1>{{ siteContent.future.title }}</h1>
+      <p>{{ siteContent.future.description }}</p>
       <div class="future-card">
         <span>coming soon</span>
       </div>
-      <router-link class="back-link" to="/">トップに戻る</router-link>
     </section>
+    <button class="secondary-button" type="button" @click="goHome">トップへ</button>
   </main>
 </template>
 
@@ -70,6 +81,17 @@ h1 {
   gap: 10px;
   color: #1d3e28;
   text-decoration: none;
+  font-weight: 600;
+}
+
+.secondary-button {
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(146, 171, 150, 0.35);
+  color: #1f3e2f;
+  margin-top: 30px;
+  padding: 12px 18px;
+  border-radius: 999px;
+  cursor: pointer;
   font-weight: 600;
 }
 

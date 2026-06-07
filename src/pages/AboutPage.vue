@@ -1,5 +1,12 @@
 <script setup>
 import { siteContent } from '../data/content';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+
+const goHome = () => {
+  router.push('/');
+};
 </script>
 
 <template>
@@ -16,19 +23,7 @@ import { siteContent } from '../data/content';
         <p>{{ siteContent.about.note }}</p>
       </div>
     </section>
-
-    <section class="profile-list">
-      <article>
-        <h2>制作スタイル</h2>
-        <p>自然素材の風合いを生かした、白を基調にした編み物作品を中心に制作しています。無駄な装飾を抑えつつ、やさしい存在感を感じさせるデザインです。</p>
-      </article>
-      <article>
-        <h2>こんな時におすすめ</h2>
-        <p>静かな時間を大切にしたい方、贈り物にふさわしい上質な手仕事を探している方におすすめです。</p>
-      </article>
-    </section>
-
-    <router-link class="back-link" to="/">← トップに戻る</router-link>
+    <button class="secondary-button" type="button" @click="goHome">トップへ</button>
   </main>
 </template>
 
@@ -51,7 +46,6 @@ import { siteContent } from '../data/content';
   border-radius: 32px;
   padding: 34px;
   box-shadow: 0 28px 72px rgba(20, 61, 49, 0.08);
-  margin-bottom: 30px;
 }
 
 .eyebrow {
@@ -134,6 +128,17 @@ h1 {
   gap: 10px;
   color: #1d3e28;
   text-decoration: none;
+  font-weight: 600;
+}
+
+.secondary-button {
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(146, 171, 150, 0.35);
+  color: #1f3e2f;
+  margin-top: 30px;
+  padding: 12px 18px;
+  border-radius: 999px;
+  cursor: pointer;
   font-weight: 600;
 }
 

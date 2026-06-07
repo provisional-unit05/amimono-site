@@ -19,6 +19,12 @@ const layerAIndex = ref(0);
 const layerBIndex = ref(images.length > 1 ? 1 : 0);
 const showFirst = ref(true);
 
+const galleryImages = siteContent.imageGallery || [];
+const galleryItems = galleryImages.map((src) => ({
+  src,
+  type: 'square',
+}));
+
 const layerAStyle = computed(() => ({ backgroundImage: `url('${images[layerAIndex.value]}')` }));
 const layerBStyle = computed(() => ({ backgroundImage: `url('${images[layerBIndex.value]}')` }));
 
@@ -47,17 +53,31 @@ onUnmounted(() => {
 
 <template>
   <main class="page home-page">
-    <button class="menu-button" type="button" @click="toggleMenu" aria-label="メニューを開く">
-      <span />
-      <span />
-      <span />
-    </button>
+    <header class="page-header">
+      <div class="header-brand">
+        <span class="brand-mark">K</span>
+        <div class="brand-copy">
+          <p class="brand-name">{{ siteContent.webName }}</p>
+          <p class="brand-subtitle">{{ siteContent.subWebName }}</p>
+        </div>
+      </div>
+      <button
+        class="header-menu-button"
+        :class="{ open: menuOpen }"
+        type="button"
+        @click="toggleMenu"
+      >
+        <span />
+        <span />
+        <span />
+      </button>
+    </header>
+
     <section class="hero-banner">
       <div class="bg-layer bg-layer-a" :style="layerAStyle" :class="{ visible: showFirst }" />
       <div class="bg-layer bg-layer-b" :style="layerBStyle" :class="{ visible: !showFirst }" />
-      <div class="hero-banner-overlay"/>
+      <div class="hero-banner-overlay" />
       <div class="hero-banner-content">
-        <div class="top-row"/>
         <div class="hero-copy">
           <p class="eyebrow">{{ hero.label }}</p>
           <h1>{{ hero.title }}</h1>
@@ -66,18 +86,21 @@ onUnmounted(() => {
       </div>
     </section>
 
-    <section class="preview-section">
-      <div class="section-label">作品紹介</div>
-      <div class="preview-grid">
+    <section class="concept-section">
+      <div class="concept-copy">
+        <h2>{{ hero.concept }}</h2>
+        <p>{{ hero.conceptText }}</p>
+      </div>
+    </section>
+
+    <section class="gallery-section">
+      <div class="gallery-grid">
         <div
-          v-for="item in works"
-          :key="item.id"
-          class="preview-card"
-          :style="{ borderColor: item.accent }"
+          v-for="(item, index) in galleryItems"
+          :key="index"
+          :class="['gallery-card', item.type]"
         >
-          <div class="preview-image">
-            <img :src="item.image" :alt="item.title" loading="lazy" />
-          </div>
+          <img :src="item.src" :alt="`作品写真 ${index + 1}`" loading="lazy" />
         </div>
       </div>
     </section>
@@ -113,35 +136,92 @@ onUnmounted(() => {
   color: #1e2f28;
 }
 
-.menu-button {
+.page-header {
   position: fixed;
-  width: 50px;
-  height: 50px;
-  margin: 20px;
-  border: 1px solid rgba(254, 206, 236, 0.75);
-  background: rgba(236, 41, 194, 0.142);
-  border-radius: 14px;
-  place-items: center;
-  cursor: pointer;
-  padding: 0;
-  z-index: 10;
-}
-
-.menu-button span {
-  display: block;
-  width: 30px;
-  height: 2px;
+  inset: 0 auto auto 0;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
   background: #fff;
-  border-radius: 1px;
+  z-index: 50;
 }
 
-.menu-button span + span {
-  margin-top: 5px;
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.brand-mark {
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  background: #ffe6f0;
+  color: #d52483;
+  font-weight: 800;
+  display: grid;
+  place-items: center;
+  font-size: 1.1rem;
+}
+
+.brand-copy {
+  display: grid;
+  line-height: 1.1;
+}
+
+.brand-name {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #43223b;
+}
+
+.brand-subtitle {
+  margin: 0;
+  font-size: 0.76rem;
+  color: #816076;
+}
+
+.header-menu-button {
+  width: 40px;
+  height: 36px;
+  border: none;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+  cursor: pointer;
+}
+
+.header-menu-button span {
+  width: 100%;
+  height: 3px;
+  border-radius: 999px;
+  background: #2e2e2e;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.header-menu-button.open span:nth-child(1) {
+  transform: translateY(10px) rotate(45deg);
+}
+
+.header-menu-button.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.header-menu-button.open span:nth-child(3) {
+  transform: translateY(-10px) rotate(-45deg);
 }
 
 .hero-banner {
   position: relative;
-  min-height: 100vh;
+  margin-top: 80px;
+  min-height: calc(100vh - 80px);
   width: 100vw;
   margin-left: calc(-50vw + 50%);
   overflow: hidden;
@@ -158,6 +238,16 @@ onUnmounted(() => {
   background-position: center;
   opacity: 0;
   transition: opacity 2s ease;
+}
+
+.bg-layer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .bg-layer.visible {
@@ -209,77 +299,69 @@ onUnmounted(() => {
   color: rgba(255, 255, 255, 0.95);
 }
 
-
-
-
-
-
-
-
-
-
-.preview-section {
-  padding: 52px 24px 0;
-}
-
-.section-label {
-  margin-bottom: 24px;
-  font-size: 0.9rem;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: #7e8a7d;
-}
-
-.preview-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 20px;
-  max-width: 1180px;
+.concept-section {
+  padding: 48px 24px 0;
+  max-width: 940px;
   margin: 0 auto;
 }
 
-.preview-card {
-  display: grid;
-  grid-template-rows: 220px auto;
-  border: 1px solid rgba(146, 171, 150, 0.2);
-  border-radius: 26px;
-  overflow: hidden;
+.concept-copy {
   background: #fff;
+  border-radius: 28px;
+  padding: 30px 28px;
+  box-shadow: 0 24px 56px rgba(30, 43, 44, 0.08);
 }
 
-.preview-image {
+.concept-copy h2 {
+  margin: 0 0 16px;
+  font-size: 1.4rem;
+  color: #2f3b33;
+}
+
+.concept-copy p {
+  margin: 0;
+  line-height: 1.8;
+  color: #4c5e50;
+}
+
+.gallery-section {
+  padding: 40px 24px 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.gallery-card {
+  position: relative;
   overflow: hidden;
-  background: #f7f8f5;
+  border-radius: 24px;
+  min-height: 0;
+  aspect-ratio: 1 / 1;
 }
 
-.preview-image img {
+.gallery-card img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
+  transition: transform 0.3s ease;
 }
 
-.preview-meta {
-  padding: 18px 18px 22px;
-}
-
-.preview-meta h2 {
-  margin: 0 0 10px;
-  font-size: 1.2rem;
-}
-
-.preview-meta p {
-  margin: 0;
-  color: #5b6055;
-  line-height: 1.75;
+.gallery-card:hover img {
+  transform: scale(1.04);
 }
 
 .menu-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(255, 255, 255, 0.74);
+  background: rgba(255, 255, 255, 0.82);
   backdrop-filter: blur(10px);
-  z-index: 40;
+  z-index: 60;
   display: grid;
   place-items: center;
   padding: 24px;
@@ -287,7 +369,7 @@ onUnmounted(() => {
 
 .menu-panel {
   width: min(420px, 100%);
-  background: rgba(255, 255, 255, 0.92);
+  background: #fff;
   border-radius: 30px;
   padding: 28px 24px;
   box-shadow: 0 28px 60px rgba(18, 34, 28, 0.15);
@@ -319,11 +401,10 @@ onUnmounted(() => {
 
 .menu-links {
   display: grid;
-  gap: 16px;
+  gap: 14px;
 }
 
-.menu-links a,
-.menu-links router-link {
+.menu-link {
   display: inline-flex;
   width: 100%;
   justify-content: flex-start;
@@ -333,6 +414,48 @@ onUnmounted(() => {
   padding: 18px 16px;
   border-radius: 18px;
   background: rgba(244, 247, 242, 0.96);
+}
+
+@media (max-width: 960px) {
+  .page-header {
+    padding: 0 18px;
+  }
+
+  .hero-banner-content {
+    padding: 32px 20px 42px;
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .gallery-card.wide {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 680px) {
+  .page {
+    padding-top: 0;
+  }
+
+  .page-header {
+    height: 72px;
+    padding: 0 16px;
+  }
+
+  .hero-banner {
+    margin-top: 72px;
+    min-height: calc(100vh - 72px);
+  }
+
+  .hero-banner-content {
+    padding: 28px 16px 36px;
+  }
+
+  .gallery-card.wide {
+    grid-column: span 1;
+  }
 }
 
 </style>
