@@ -148,6 +148,7 @@ h1 {
   color: #d52483;
   text-decoration: none;
   font-weight: 700;
+  font-size: 80%;
   transition: background 0.2s ease, transform 0.2s ease;
 }
 
