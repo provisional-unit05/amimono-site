@@ -49,7 +49,6 @@ const goHome = () => {
         <h1>{{ siteContent.worksDetail }}</h1>
       </div>
     </header>
-
     <section class="works-grid">
       <button
         v-for="item in works"
@@ -135,19 +134,19 @@ const goHome = () => {
   text-transform: uppercase;
   letter-spacing: 0.24em;
   font-size: 0.82rem;
-  color: #7d8a7d;
+  color: #a56c2c;
 }
 
 h1 {
-  margin: 0;
-  font-size: clamp(2rem, 3vw, 3rem);
-  line-height: 1.05;
+  margin: 0 0 20px;
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  color: #ffca2c;
 }
 
 .secondary-button {
   background: rgba(255, 255, 255, 0.96);
   border: 1px solid rgba(146, 171, 150, 0.35);
-  color: #1f3e2f;
+  color: #3f5f4c;
   margin-top: 30px;
   padding: 12px 18px;
   border-radius: 999px;
@@ -205,7 +204,7 @@ h1 {
 
 .work-meta p {
   margin: 0;
-  color: #545d52;
+  color: #3f5f4c;
   line-height: 1.72;
 }
 
@@ -220,7 +219,7 @@ h1 {
 }
 
 .modal-panel {
-  width: min(500px, 100%);
+  width: min(350px, 100%);
   background: #fff;
   border-radius: 26px;
   overflow: hidden;
@@ -310,12 +309,12 @@ h1 {
 
 .modal-content h2 {
   margin: 0 0 14px;
-  font-size: clamp(1.9rem, 3vw, 2.6rem);
+  font-size: clamp(1.2rem, 3vw, 0.8rem);
 }
 
 .modal-content p {
   margin: 0;
-  color: #4c564d;
+  color: #3f5f4c;
   line-height: 1.8;
 }
 

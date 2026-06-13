@@ -11,16 +11,24 @@ const goHome = () => {
 
 <template>
   <main class="page about-page">
-    <section class="about-panel">
-      <div class="about-copy">
+    <header class="section-header">
+      <div>
         <p class="eyebrow">作成者紹介</p>
         <h1>{{ siteContent.about.title }}</h1>
-        <p>{{ siteContent.about.lead }}</p>
-        <p>{{ siteContent.about.body }}</p>
       </div>
+    </header>
+    <section class="about-panel">
       <div class="about-badge">
-        <div class="badge-circle">M</div>
+        <div class="badge-circle">
+          <img :src="siteContent.about.image" />
+        </div>
         <p>{{ siteContent.about.note }}</p>
+      </div>
+      <div class="about-copy">
+        <p>{{ siteContent.about.text1 }}</p>
+        <p>{{ siteContent.about.text2 }}</p>
+        <p>{{ siteContent.about.text3 }}</p>
+        <p>{{ siteContent.about.text4 }}</p>
       </div>
     </section>
     <button class="secondary-button" type="button" @click="goHome">トップへ</button>
@@ -30,36 +38,34 @@ const goHome = () => {
 <style scoped>
 .page {
   position: relative;
-  padding: 40px 26px 52px;
-  max-width: 940px;
+  min-height: 100vh;
+  padding: 40px 24px 60px;
+  max-width: 1180px;
   margin: 0 auto;
   background: #fff;
-  color: #1d2f28;
+  color: #3f5f4c;
 }
 
-.about-panel {
-  display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  gap: 24px;
-  background: rgba(255, 255, 255, 0.96);
-  border: 1px solid rgba(147, 164, 150, 0.25);
-  border-radius: 32px;
-  padding: 34px;
-  box-shadow: 0 28px 72px rgba(20, 61, 49, 0.08);
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 28px;
 }
 
 .eyebrow {
-  margin: 0 0 14px;
+  margin: 0 0 10px;
   text-transform: uppercase;
   letter-spacing: 0.24em;
   font-size: 0.82rem;
-  color: #7a8c7e;
+  color: #a56c2c;
 }
 
 h1 {
   margin: 0 0 20px;
-  font-size: clamp(2rem, 3vw, 3rem);
-  color: #183528;
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  color: #e47ac6;
 }
 
 .about-copy p {
@@ -70,82 +76,50 @@ h1 {
 
 .about-badge {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  align-items: center;
   gap: 18px;
-  background: #f5f7f2;
+  background: #ffc0d93f;
   border-radius: 28px;
   padding: 30px 26px;
+  margin-bottom: 15px;
 }
 
 .badge-circle {
   width: 88px;
   height: 88px;
   border-radius: 50%;
-  background: #d7e3d5;
-  color: #1f3e2f;
+  background: #ffe6f0;
   display: grid;
   place-items: center;
-  font-size: 2.4rem;
-  font-weight: 700;
+  overflow: hidden;
   box-shadow: inset 0 0 0 2px rgba(44, 91, 64, 0.14);
+  flex-shrink: 0;
+}
+
+.badge-circle img {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .about-badge p {
   margin: 0;
-  color: #3c5544;
-  line-height: 1.72;
-}
-
-.profile-list {
-  display: grid;
-  gap: 18px;
-  margin-bottom: 32px;
-}
-
-.profile-list article {
-  background: rgba(255, 255, 255, 0.96);
-  border-radius: 24px;
-  padding: 26px;
-  box-shadow: 0 18px 36px rgba(17, 56, 41, 0.08);
-}
-
-.profile-list h2 {
-  margin: 0 0 12px;
-  font-size: 1.2rem;
-  color: #18422c;
-}
-
-.profile-list p {
-  margin: 0;
-  line-height: 1.75;
-  color: #4c6250;
-}
-
-.back-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  color: #1d3e28;
-  text-decoration: none;
-  font-weight: 600;
+  color: #3f5f4c;
+  line-height: 1.6;
+  flex: 1;
+  min-width: 0;
 }
 
 .secondary-button {
   background: rgba(255, 255, 255, 0.96);
   border: 1px solid rgba(146, 171, 150, 0.35);
-  color: #1f3e2f;
+  color: #3f5f4c;
   margin-top: 30px;
   padding: 12px 18px;
   border-radius: 999px;
   cursor: pointer;
   font-weight: 600;
-}
-
-@media (max-width: 860px) {
-  .about-panel {
-    grid-template-columns: 1fr;
-  }
 }
 
 @media (max-width: 640px) {
@@ -158,13 +132,23 @@ h1 {
   }
 
   .about-badge {
+    gap: 14px;
     padding: 24px 22px;
+  }
+
+  .about-badge p {
+    font-size: 0.95rem;
+    line-height: 1.55;
   }
 }
 
 @media (max-width: 520px) {
-  .profile-list article {
-    padding: 20px;
+  .about-badge {
+    gap: 12px;
+  }
+
+  .about-badge p {
+    font-size: 0.92rem;
   }
 }
 </style>

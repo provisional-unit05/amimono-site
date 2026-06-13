@@ -2,7 +2,7 @@
 import { ref, computed, onMounted, onUnmounted } from 'vue';
 import { siteContent } from '../data/content';
 
-const { hero, menu, works } = siteContent;
+const { hero, menu } = siteContent;
 const menuOpen = ref(false);
 
 const toggleMenu = () => {
@@ -57,8 +57,7 @@ onUnmounted(() => {
       <div class="header-brand">
         <span class="brand-mark">K</span>
         <div class="brand-copy">
-          <p class="brand-name">{{ siteContent.webName }}</p>
-          <p class="brand-subtitle">{{ siteContent.subWebName }}</p>
+          <p class="brand-title">{{ siteContent.webName }}</p>
         </div>
       </div>
       <button
@@ -72,7 +71,6 @@ onUnmounted(() => {
         <span />
       </button>
     </header>
-
     <section class="hero-banner">
       <div class="bg-layer bg-layer-a" :style="layerAStyle" :class="{ visible: showFirst }" />
       <div class="bg-layer bg-layer-b" :style="layerBStyle" :class="{ visible: !showFirst }" />
@@ -85,14 +83,12 @@ onUnmounted(() => {
         </div>
       </div>
     </section>
-
     <section class="concept-section">
       <div class="concept-copy">
         <h2>{{ hero.concept }}</h2>
         <p>{{ hero.conceptText }}</p>
       </div>
     </section>
-
     <section class="gallery-section">
       <div class="gallery-grid">
         <div
@@ -174,16 +170,11 @@ onUnmounted(() => {
   line-height: 1.1;
 }
 
-.brand-name {
-  margin: 0;
-  font-size: 1rem;
-  font-weight: 700;
-  color: #43223b;
-}
-
-.brand-subtitle {
+.brand-title {
   margin: 0;
   font-size: 0.76rem;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
   color: #816076;
 }
 
@@ -270,11 +261,6 @@ onUnmounted(() => {
   z-index: 2;
 }
 
-.top-row {
-  display: flex;
-  justify-content: flex-start;
-}
-
 .hero-copy {
   margin-top: 80px;
 }
@@ -289,7 +275,7 @@ onUnmounted(() => {
 
 .hero-banner h1 {
   margin: 0 0 20px;
-  font-size: clamp(2rem, 6vw, 3.5rem);
+  font-size: clamp(1.5rem, 6vw, 3.5rem);
   line-height: 1.02;
   letter-spacing: -0.04em;
 }
@@ -317,13 +303,13 @@ onUnmounted(() => {
 .concept-copy h2 {
   margin: 0 0 16px;
   font-size: 1.4rem;
-  color: #2f3b33;
+  color: #a56c2c;
 }
 
 .concept-copy p {
   margin: 0;
   line-height: 1.8;
-  color: #4c5e50;
+  color: #3f5f4c;
 }
 
 .gallery-section {
@@ -389,7 +375,7 @@ onUnmounted(() => {
   font-size: 0.9rem;
   letter-spacing: 0.24em;
   text-transform: uppercase;
-  color: #627161;
+  color: #a56c2c;
 }
 
 .close-button {
@@ -410,7 +396,7 @@ onUnmounted(() => {
   display: inline-flex;
   width: 100%;
   justify-content: flex-start;
-  color: #1d3029;
+  color: #3f5f4c;
   text-decoration: none;
   font-size: 1.15rem;
   padding: 18px 16px;
@@ -437,9 +423,6 @@ onUnmounted(() => {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .gallery-card.wide {
-    grid-column: span 2;
-  }
 }
 
 @media (max-width: 680px) {
@@ -461,9 +444,6 @@ onUnmounted(() => {
     padding: 28px 16px 36px;
   }
 
-  .gallery-card.wide {
-    grid-column: span 1;
-  }
 }
 
 </style>

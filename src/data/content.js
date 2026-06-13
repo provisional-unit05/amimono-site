@@ -1,20 +1,19 @@
 const BASE_URL = import.meta.env.BASE_URL;
 
 export const siteContent = {
-  webName: 'KnittingMayuMayu',
-  subWebName: 'やさしい編み物の時間',
+  webName: 'knitting　MayuMayu',
   hero: {
     images: [
       `${BASE_URL}images/knittingBack_1.jpg`,
       `${BASE_URL}images/knittingBack_2.jpg`,
       `${BASE_URL}images/knittingBack_3.jpg`,
+      `${BASE_URL}images/knittingBack_4.jpg`,      
     ],
-    label: '編み物ギャラリー',
-    title: 'やさしさを編む、日常のための作品たち',
-    description: '手で紡いだ編み物が、暮らしにしっくり馴染む。白を基調にしたやさしい表情のデザインで、静かな存在感を届けます。',
-    concept: 'コンセプト',
-    conceptText: '日々の暮らしに寄り添うやさしい編み物。白を基調に、素材の風合いと心地よさを大切にした作品をお届けします。',
-    instagramUrl: 'https://www.instagram.com/',
+    label: 'knitting　MayuMayu',
+    title: '暮らしの中にときめく余白を',
+    description: '一つ一つ丁寧に手作りした編み物が、日々の暮らしに彩りを添えます。コットンやリネン、シルクなどの素材感を大切にした	\r\nパステルカラーの作品が得意です。',
+    concept: 'concept',
+    conceptText: '見るだけで、なんだかワクワクしてくるような「ときめき」をプラスする編み物をお届けします。',
   },
   menu: [
     { id: 'works', label: '作品紹介', path: '/works' },
@@ -30,13 +29,13 @@ export const siteContent = {
     `${BASE_URL}images/whiteStrawHat_1.jpg`,
   ],
   worksTitle: '作品紹介',
-  worksDetail: '日常に寄り添うやさしい編み物を紹介します。白を基調に、素材の風合いと心地よさを大切にした作品たちです。',
+  worksDetail: '日々にときめきを添える手仕事の記録',
   works: [
     {
       id: '1',
-      title: '麦わら帽子（沖縄の）',
-      description: '夏らしい表情を添える、ナチュラルな編み飾り。',
-      detail: '沖縄の麦わら帽子をベースに、白い糸で編んだ飾りをあしらいました。軽やかな素材感とシンプルなデザインで、夏のコーディネートにぴったりの一品です。',
+      title: 'レースリボンの麦わら帽子',
+      description: 'こちらは、オリジナル作品です。',
+      detail: '夏の日差しよけに活躍する麦わら帽子。洗える糸で作っているため、汗をかいても簡単にお手入れできます。',
       image: [
         `${BASE_URL}images/whiteStrawHat_1.jpg`,
         `${BASE_URL}images/whiteStrawHat_2.jpg`,
@@ -46,9 +45,9 @@ export const siteContent = {
     },
     {
       id: '2',
-      title: 'pinkのハンドバッグ',
-      description: '軽やかな編み地とシンプルなデザインで、どんなスタイルにも合わせやすいバッグです。',
-      detail: 'ピンクのハンドバッグは、軽やかな編み地とシンプルなデザインで、どんなスタイルにも合わせやすい一品です。',
+      title: 'モチーフつなぎのバケットバッグ',
+      description: 'こちらは、書籍（NHKすてきにハンドメイド）を参考に作りました。',
+      detail: 'こちらの作品は、『NHKすてきにハンドメイド　かぎ針で編む春夏糸のバッグと帽子』の編み図を参考に、技術向上のため制作したものです。書籍等の著作権に配慮し、こちらの作品の販売･オーダー受付はしておりません。',
       image: [
         `${BASE_URL}images/pinkBag_1.jpg`,
         `${BASE_URL}images/pinkBag_2.jpg`,
@@ -58,9 +57,9 @@ export const siteContent = {
     },
     {
       id: '3',
-      title: '麦わら帽子',
-      description: 'やわらかな色合いとコンパクトなサイズ感で、持ち歩きやすい一品。',
-      detail: '麦わら帽子は、やわらかな色合いとコンパクトなサイズ感で、持ち歩きやすい一品です。',
+      title: 'コットン糸のバケハ',
+      description: 'こちらは、happyknittingmama/ハピママさんの編み図を参考に作りました。',
+      detail: 'コットン糸で編んでいるため、コンパクトに折りたたんで持ち運べます。春先から秋口まで活躍する、やわらかな色合いのバケハです。色違いでのオーダーも受付可能です。',
       image: [
         `${BASE_URL}images/strawHat_1.jpg`,
         `${BASE_URL}images/strawHat_2.jpg`,
@@ -70,56 +69,61 @@ export const siteContent = {
     },
     {
       id: '4',
-      title: 'ハンドバック',
-      description: '柔らかなフォルムと控えめな色で、さりげなく存在感を放つ一品。',
-      detail: 'ハンドバックは、柔らかなフォルムと控えめな色で、さりげなく存在感を放つ一品です。',
+      title: '巾着付きのハンドバック',
+      description: 'こちらは、LiLi nana*さんの動画を参考に作りました。',
+      detail: 'ハンドバックは柔らかなフォルムと、どんなコーディネートにも合う色で、さりげなく存在感を放つ一品です。小さく見えて、内側には巾着がついているため、意外と収納力があります。',
       image: [
         `${BASE_URL}images/handBag_1.jpg`,
         `${BASE_URL}images/handBag_2.jpg`,
       ],
-      accent: '#a6e38a',
+      accent: '#f3d39d',
     },
     {
       id: '5',
-      title: 'ドイリーの花かざり',
-      description: '窓辺に馴染む、繊細な雰囲気を纏った編みモチーフ。',
-      detail: 'ドイリーの花かざりは、窓辺に馴染む、繊細な雰囲気を纏った編みモチーフです。白い糸で編まれた花の形が、やさしい光を通しながらお部屋を彩ります。',
+      title: '透かし編みの大きめコースター',
+      description: 'こちらは、YouTubeの動画を参考に作りました。',
+      detail: '急須や湯飲み、テーブルの小物置きに活躍する大きめのコースターです。繊細な編み目が、リラックスタイムをより特別なものにしてくれます。',
       image: [
         `${BASE_URL}images/doily_1.jpg`, 
         `${BASE_URL}images/doily_2.jpg`],
-      accent: '#aeb1f4',
+      accent: '#9ee097',
     },
         {
       id: '6',
-      title: '巾着バッグ',
-      description: 'やわらかな色合いとコンパクトなサイズ感で、持ち歩きやすい一品。',
-      detail: '巾着バッグは、やわらかな色合いとコンパクトなサイズ感で、持ち歩きやすい一品です。',
+      title: '三色巾着バッグ',
+      description: 'こちらは、オリジナル作品です。',
+      detail: 'ポーチより大きめで、ちょっとしたお出かけにぴったりなサイズの巾着バッグです。小さなリボンのような特殊な糸を使っているため、人とあまり被らないフワフワの素材感が特徴です。',
       image: [
         `${BASE_URL}images/purse_1.jpg`
       ],
-      accent: '#92e2b6',
+      accent: '#ed89b1',
     },
     {
       id: '7',
-      title: 'お花のマット',
-      description: 'お部屋にやさしいアクセントを添える、花モチーフのラグマット。',
-      detail: 'お花のマットは、お部屋にやさしいアクセントを添える、花モチーフのラグマットです。',
+      title: 'お花のミニマルチマット',
+      description: 'こちらは、YouTubeの動画を参考に作りました。',
+      detail: 'テーブルだけでなく、玄関やベッドサイドなど、ちょっとしたスペースに置いて楽しめるマルチマットです。色違いのお花のモチーフが、空間にさりげない華やかさをプラスしてくれます。',
       image: [
         `${BASE_URL}images/mat_1.jpg`
       ],
-      accent: '#92e2b6',
+      accent: '#7dceee',
     },
   ],
   about: {
-    title: 'まゆまゆについて',
-    lead: '自然の風景ややわらかな光にインスパイアされた、日常に寄り添う編み物を制作しています。',
-    body: '手仕事のあたたかさを大切にしつつ、白を基調とした洗練された空気感を目指しています。素材と色のバランスを意識しながら、使いやすさも考えたデザインをお届けします。',
-    note: 'これからも、静かな存在感のある編み物を少しずつ形にしていきます。',
+    title: 'ニッティングまゆまゆ',
+    text1: '編み物を始めたきっかけは、ふと何気なく「作ってみよう」と思ったことからでした。一針一針編み進め、形になっていく達成感や、人工的なものにはない手作りならではの温かみに、いつの間にか魅了されていきました。',
+    text2: '「あの人は普段こんな服を着ているから、この色が似合うかもしれない」「このデザインなら、きっと喜んでくれそう」そんなふうに、使う人の笑顔や暮らしを想像しながら糸を選び、作品を作る時間が大好きです。',
+    text3: '生きていく中では、効率や必要なものばかりが重視されがちです。でも、一見「不必要なもの」に思えるかもしれない、ちいさな癒やしや、心がキュンとする楽しみが、心豊かに生きていくために必要なものだと思っています。',
+    text4: '細かい部分も妥協せず、編むことの楽しさを大切にしながら、日々技術を磨いています。ニッティングまゆまゆの作品が、あなたにとって日常のささやかな楽しみや、ときめきになりますように。',
+    image: `${BASE_URL}images/mayu_1.jpg`,
+    note: '使う人の笑顔を浮かべながら、一針ずつ大切に。',
   },
   future: {
     eyebrow: 'これから',
     title: '準備中のコンテンツ',
-    description: '本日はご覧いただきありがとうございます。新しい作品や活動情報についてはInstagramで随時更新していきますので、ぜひフォローしてお待ちください。今後の展開にご期待いただけると嬉しいです。',
+    text1: '本日はご覧いただきありがとうございます。新しい作品や活動情報については、Instagramで随時更新していきますので、ぜひフォローしてお待ちいただけると嬉しいです。',
+    text2: '今後は、メルカリ等での販売も予定しています。「色違いが欲しいな」「この商品についてもっと知りたい」などございましたら、InstagramのDMからでも、お気軽にお問い合わせください。',
+    instagram: 'https://www.instagram.com/knitting_mayumayu?igsh=MTFiZXFvYXY3NjlwaQ%3D%3D&utm_source=qr',
   },
-  CautionaryNote: '※掲載している作品はすべて商用目的の作品ではありません。あくまでデザインの参考例としてご覧ください。',
+  CautionaryNote: '※一部作品は著作権の問題から販売できないものもございます。詳細につきましては、作品紹介ページの各作品の説明をご覧ください。',
 };
